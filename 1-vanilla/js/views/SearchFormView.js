@@ -5,11 +5,12 @@ export default class SearchFormView extends View {
     constructor() {
         super(qs("#search-form-view"));
 
+        this.inputElement = qs("[type=text", this.element)
         this.resetElement = qs("[type=reset]", this.element)
-        this.showResultButton(false)
+        this.showResetButton(false)
     }
 
-    showResultButton(visible = true) {
+    showResetButton(visible = true) {
         this.resetElement.style.display = visible ? "block" : "none";
     }
 }
