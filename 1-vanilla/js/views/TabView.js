@@ -34,6 +34,7 @@ export default class TabView extends View {
 
 
     handleClick(event) {
+        console.log(event.target);
         const value = event.target.dataset.tab;
         this.emit("@change", { value })
     }
