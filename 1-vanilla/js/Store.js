@@ -25,10 +25,8 @@ export default class Store {
   }
 
   getHistoryList() {
-    return this.storage.historyData.sort(this._sortHistory);
+    return this.storage.historyData.sort(this._sortHistory)
   }
 
-  _sortHistory(history1, history2) {
-    return history2.date > history1.date;
-  }
+  _sortHistory = (history1, history2) => history2.date > history1.date;
 }
