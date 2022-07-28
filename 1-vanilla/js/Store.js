@@ -29,4 +29,6 @@ export default class Store {
   }
 
   _sortHistory = (history1, history2) => history2.date > history1.date;
+
+  removeHistory
 }
