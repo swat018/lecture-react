@@ -27,7 +27,10 @@ export default class Controller {
 
     this.keywordListView.on("@click", (event) => this.search(event.detail.value));
 
-    this.historyListView.on("@click", (event) => this.search(event.detail.value));
+    this.historyListView.on("@click", (event) =>
+        this.search(event.detail.value)
+    ).on("@remove", (event) => this.removeHistory(event.detail.value));
+
   }
 
   search(searchKeyword) {
@@ -77,5 +80,10 @@ export default class Controller {
     this.historyListView.hide();
 
     this.searchResultView.show(this.store.searchResult);
+  }
+
+  removeHistory(keyword) {
+    this.store.removeHistory(keyword);
+    this.render();
   }
 }
