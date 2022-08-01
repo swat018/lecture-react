@@ -18,6 +18,7 @@ export default class Store {
   search(keyword) {
     this.searchKeyword = keyword;
     this.searchResult = this.storage.productData.filter(product => product.name.includes(keyword));
+    this.addHistory(keyword);
   }
 
   getKeywordList() {
@@ -34,5 +35,16 @@ export default class Store {
     this.storage.historyData = this.storage.historyData.filter(
         (history) => history.keyword !== keyword
     );
+  }
+
+  addHistory(keyword = "") {
+    keyword = keyword.trim();
+    if (!keyword) return;
+
+    const hasHistory = this.storage.historyData.some(history => history.keyword === keyword);
+    if (hasHistory) this.removeHistory(keyword);
+
+    const date = new Date();
+    this.storage.historyData.push({ keyword, date });
   }
 }
