@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = "Hello world"; // model
+        // document.body.innerHTML = `<p>${data}</p>`;
+        const title = document.createElement("h1");
+        document.body.appendChild(title);
+        title.textContent = data;
+
+        data = "안녕하세요.";
+        // document.body.innerHTML = `<p>${data}</p>`;
+        title.textContent = title.textContent = data;
+    </script>
+</body>
+</html>
