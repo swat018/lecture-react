@@ -1,4 +1,5 @@
 import {TabType} from "./views/TabView.js";
+import {createNextId} from "./helpers.js";
 
 const tag = "[store]";
 
@@ -29,7 +30,9 @@ export default class Store {
     return this.storage.historyData.sort(this._sortHistory)
   }
 
-  _sortHistory = (history1, history2) => history2.date > history1.date;
+  _sortHistory(history1, history2) {
+    return history2.date > history1.date;
+  }
 
   removeHistory(keyword) {
     this.storage.historyData = this.storage.historyData.filter(
@@ -44,7 +47,9 @@ export default class Store {
     const hasHistory = this.storage.historyData.some(history => history.keyword === keyword);
     if (hasHistory) this.removeHistory(keyword);
 
+    const id = createNextId(this.storage.historyData)
     const date = new Date();
-    this.storage.historyData.push({ keyword, date });
+    this.storage.historyData.push({ id, keyword, date });
+    this.storage.historyData = this.storage.historyData.sort(this._sortHistory);
   }
 }
