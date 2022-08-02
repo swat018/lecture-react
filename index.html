@@ -37,6 +37,11 @@
         render();
 
         state.data = "안녕";
+
+        setTimeout(() => {
+            // state.data 값을 변경하는 것만으로 "안녕하세요"가 화면에 출력된다.
+            state.data = "안녕하세요"
+        }, 1000)
     </script>
 </body>
 </html>
