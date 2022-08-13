@@ -15,12 +15,27 @@ class App extends React.Component {
                 </header>
                 <div className="container">
                     <form>
-                        <input type="text" placeholder="검색어를 입력하세요" autoFocus value={this.state.searchKeyword} />
+                        <input
+                            type="text"
+                            placeholder="검색어를 입력하세요"
+                            autoFocus
+                            value={this.state.searchKeyword}
+                            onChange={event => this.handleChangeInput(event)}
+                        />
                         <button type="reset" className="btn-reset"></button>
                     </form>
                 </div>
             </>
         )
+    }
+
+    handleChangeInput(event) {
+        // this.state.searchKeyword = event.target.value;
+        // this.forceUpdate();
+
+        this.setState({
+            searchKeyword: event.target.value,
+        })
     }
 }
 
