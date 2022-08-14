@@ -1,3 +1,5 @@
+import store from "./js/Store.js"
+
 class App extends React.Component {
     constructor() {
         super();
@@ -6,6 +8,35 @@ class App extends React.Component {
             searchKeyword: "",
             searchResult: [],
         }
+    }
+
+    handleChangeInput(event) {
+        const searchKeyword = event.target.value;
+
+        if (searchKeyword.length <= 0) {
+            return this.handleReset()
+        }
+
+        this.setState({searchKeyword});
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        this.search(this.state.searchKeyword)
+    }
+
+    search(searchKeyword) {
+        const searchResult = store.search(searchKeyword);
+        this.setState({searchResult});
+    }
+
+    handleReset() {
+//        this.setState({searchKeyword: "" })
+        this.setState(() => {
+            return {searchKeyword: ""}
+        }, () => {
+            console.log("TODO: handleReset", this.state.searchKeyword)
+        })
     }
 
     render() {
@@ -32,8 +63,17 @@ class App extends React.Component {
                     </form>
                     <div className="content">
                         {this.state.searchResult.length > 0 ? (
-                            <div>TODO: 검색 결과 목록 표시하기</div>
-                        ): (
+                            <ul className="result">
+                                {this.state.searchResult.map(item => {
+                                    return (
+                                        <li>
+                                            <img src={item.imageUrl} alt={item.name}/>
+                                            <p>{item.name}</p>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        ) : (
                             <div className="empty-box">검색 결과가 없습니다.</div>
                         )}
                     </div>
@@ -42,29 +82,6 @@ class App extends React.Component {
         )
     }
 
-    handleChangeInput(event) {
-        const searchKeyword = event.target.value;
-
-        if (searchKeyword.length <= 0) {
-            return this.handleReset()
-        }
-
-        this.setState({ searchKeyword });
-    }
-
-    handleSubmit(event) {
-        event.preventDefault()
-        console.log('TODO: handleSubmit', this.state.searchKeyword)
-    }
-
-    handleReset() {
-//        this.setState({searchKeyword: "" })
-        this.setState(() => {
-            return { searchKeyword: "" }
-        }, () => {
-            console.log("TODO: handleReset", this.state.searchKeyword)
-        })
-    }
 }
 
 ReactDOM.render(<App />, document.querySelector("#app"))
