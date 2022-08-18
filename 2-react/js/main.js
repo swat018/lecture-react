@@ -33,7 +33,7 @@ class App extends React.Component {
 
     handleReset() {
 //        this.setState({searchKeyword: "" })
-        this.setState({searchKeyword: "", submitted: false});
+        this.setState({searchKeyword: "", searchResult: [],submitted: false});
     }
 
     render() {
