@@ -18,6 +18,7 @@ class App extends React.Component {
             searchKeyword: "",
             searchResult: [],
             submitted: false,
+            selectedTab: TabType.KEYWORD,
         }
     }
 
@@ -85,9 +86,14 @@ class App extends React.Component {
 
         const tabs = (
             <ul className="tabs">
-                {Object.values(TabType).map(tabType => {
-                    return (<li key={tabType}>{TabLabel[tabType]}</li>)
-                })}
+                {Object.values(TabType).map(tabType => (
+                    <li
+                        key={tabType}
+                        className={this.state.selectedTab === tabType ? "active" : ""}
+                    >
+                        {TabLabel[tabType]}
+                    </li>
+                ))}
             </ul>
         )
 
