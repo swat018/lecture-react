@@ -26,6 +26,12 @@ class Store {
   _sortHistory(history1, history2) {
     return history2.data > history1.data;
   }
+
+  removeHistory(keyword) {
+    this.storage.historyData = this.storage.historyData.filter(
+        (history) => history.keyword !== keyword
+    );
+  }
 }
 
 const store = new Store(storage)
