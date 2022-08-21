@@ -18,6 +18,14 @@ class Store {
   getKeywordList() {
     return this.storage.keywordData;
   }
+
+  getHistoryList() {
+    return this.storage.historyData.sort(this._sortHistory);
+  }
+
+  _sortHistory(history1, history2) {
+    return history2.data > history1.data;
+  }
 }
 
 const store = new Store(storage)
