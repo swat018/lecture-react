@@ -45,7 +45,7 @@ class App extends React.Component {
 
     search(searchKeyword) {
         const searchResult = store.search(searchKeyword);
-        this.setState({searchResult, submitted: true});
+        this.setState({searchResult, submitted: true, searchKeyword});
     }
 
     handleReset() {
@@ -92,11 +92,11 @@ class App extends React.Component {
 
         const keywordList = (
             <ul className="list">
-                {this.state.keywordList.map((item, index) => {
+                {this.state.keywordList.map(({id,keyword}, index) => {
                     return (
-                        <li key={item.id}>
+                        <li key={id} onClick={() => this.search(keyword)}>
                             <span className="number">{index + 1}</span>
-                            <span>{item.keyword}</span>
+                            <span>{keyword}</span>
                         </li>
                     )
                 })}
