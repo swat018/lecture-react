@@ -29,6 +29,7 @@ export default class SearchForm extends React.Component {
     }
 
     render() {
+        const { onReset } = this.props;
         const { searchKeyword } = this.state;
 
         return (
