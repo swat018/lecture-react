@@ -59,3 +59,4 @@
   - [구현하기 1] SearchForm 1
   - [구현하기 1] SearchForm 2
   - [구현하기 1] State 끌어 올리기
+  - [구현하기 1] SearchResult
