@@ -3,8 +3,6 @@ import store from "../store.js"
 import List from "./List.js"
 import { formatRelativeDate } from "../helpers.js"
 
-
-
 export default class HistoryList extends React.Component {
     constructor() {
         super();
