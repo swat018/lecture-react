@@ -1,6 +1,5 @@
 import React from 'react';
 import {formatRelativeDate} from "../helpers.js";
-import store from "../Store";
 
 const List =({ data = [], onClick, hasIndex = false, hasDate = false, onRemove }) => {
     return (
